@@ -353,7 +353,7 @@ function spawn_cron( $gmt_time = 0 ) {
 		'url'  => add_query_arg( 'doing_wp_cron', $doing_wp_cron, site_url( 'wp-cron.php' ) ),
 		'key'  => $doing_wp_cron,
 		'args' => array(
-			'timeout'   => 0.1,
+			'timeout'   => 0.01,
 			'blocking'  => false,
 			/** This filter is documented in wp-includes/class-wp-http-streams.php */
 			'sslverify' => apply_filters( 'https_local_ssl_verify', false )
