@@ -85,12 +85,9 @@ layui.use('layim', function(){
         }
     });
 
-
-    $('.site-demo-layim').on('click', function(){
+    $(function(){
         layim.chat(tmp_group);
-        // var type = $(this).data('type');
-        // active[type] ? active[type].call(this) : '';
-    });
+    })
 
 
     //开启socket
@@ -108,7 +105,19 @@ layui.use('layim', function(){
                         system:true,
                         id:tmp_group.id,
                         type:"group",
-                        content: data.new_uname ? data.new_uname : mySocket.create_uname() + '加入群聊'
+                        content: (data.new_uname ? data.new_uname : mySocket.create_uname()) + '加入群聊'
+                    };
+
+                    //有新用户加入群聊
+                    layim.getMessage(sys_msg);
+
+                }else if(res.type == 'close'){
+                    //系统消息
+                    var sys_msg = {
+                        system:true,
+                        id:tmp_group.id,
+                        type:"group",
+                        content: data.msg
                     };
 
                     //有新用户加入群聊
