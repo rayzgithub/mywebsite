@@ -29,7 +29,7 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '18671362731@Fb');
 
 /** MySQL主机 */
-define('DB_HOST', 'localhost');
+define('DB_HOST', '182.61.35.125');
 
 /** 创建数据表时默认的文字编码 */
 define('DB_CHARSET', 'utf8mb4');
