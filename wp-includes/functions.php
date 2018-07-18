@@ -6069,3 +6069,42 @@ function wp_privacy_delete_old_export_files() {
 		}
 	}
 }
+
+/**
+ * @describe  格式化打印  for debug
+ * @param
+ * @return
+ * @author zhouyong
+ */
+function fprint_r($item){
+
+    echo '<pre>';
+
+    print_r($item);
+
+    echo '</pre>';
+}
+
+function get_all_avatars(){
+    //存放头像地址
+    $avatar_dir = 'wp-content/themes/layui/images/avatar/';
+    //扫描文件夹
+    $list = scandir($avatar_dir);
+    //定义头像文件格式   avatar_1.jpg
+    $re = '/^avatar_\d.(jpg|jpeg|png|gif)$/';
+
+    $avatars = [];
+
+    foreach($list as $key => $val){
+        if(preg_match($re,$val)){
+
+            $filename = explode('.',$val);
+
+            $seq = explode('_',$filename[0]);
+
+            $avatars[$seq[1]] = $avatar_dir . $val;
+
+        }
+    }
+    return $avatars;
+}

@@ -18,6 +18,8 @@
 //加载函数库及setting config配置文件
 require( dirname(__FILE__) . '/wp-load.php' );
 
+$avatar = get_all_avatars();
+
 get_header(); ?>
     <script src="wp-includes/js/jquery-1.10.2.min.js"></script>
     <script src="wp-content/themes/layui/socket.js"></script>
@@ -52,12 +54,12 @@ get_header(); ?>
 
                         <div class="layui-row layui-col-space15" id="avatar-box">
 
-                            <?php for($i=0;$i<30;$i++){ ?>
+                            <?php foreach($avatar as $key => $val){ ?>
                                 <div class="layui-col-md2 layui-col-sm3">
                                     <div class="layadmin-contact-box">
                                         <a href="javascript:;">
                                             <div class="layadmin-text-center">
-                                                <img src="wp-content/themes/layui/images/avatar/avatar_1.jpg">
+                                                <img src="<?php echo $val; ?>">
                                             </div>
                                         </a>
                                     </div>
@@ -84,7 +86,6 @@ get_header(); ?>
                         $("#avatar-box img").click(function(){
                             var src = $(this).attr("src");
                             $("#my_avatar").attr('src',src);
-                            $("#my_avatar_val").val(src);
                         })
 
                         //确认修改
@@ -93,8 +94,8 @@ get_header(); ?>
                                 reset_user('uname',$("#my_uname").val());
                             }
 
-                            if($("#my_avatar_val").val()){
-                                reset_user('avatar',$("#my_avatar_val").val());
+                            if($("#my_avatar").attr('src')){
+                                reset_user('avatar',$("#my_avatar").attr('src'));
                             }
 
                             $("#edit_user_info").trigger('click');
