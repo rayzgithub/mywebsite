@@ -32,7 +32,22 @@ get_header(); ?>
         <div id="primary" class="content-area">
             <main id="main" class="site-main" role="main">
 
-                <p>点击按钮，试一试</p>
+                <p>忙碌一个星期，终于完成了第一个版本的webchat。以下为v1.0的主要功能：</p>
+                <br>
+
+                <ul>
+                    <li>1、第一个版本的webchat暂只支持基础的文字聊天功能</li>
+                    <li>2、第一个版本的webchat暂只支持群聊功能</li>
+                    <li>3、默认头像、用户名及头像、用户名修改功能</li>
+                </ul>
+                <br>
+
+                <p>目前消息的存储和个人信息的保存全部依赖前端的localstorage，后续若有时间会考虑做后端的保存，以及支持消息漫游、一对一会话、自定义群组、添加好友等功能.</p>
+                <br>
+                <p>前端ui基于 <b><a href="http://layim.layui.com/" target="_blank">layim</a></b> 框架修改</p>
+                <p>后端功能基于 <b><a href="https://www.workerman.net/" target="_blank">workman</a></b> 的长链接服务</p>
+                <br>
+                <p style="color: orangered">点击下面按钮，试一试</p>
                 <br>
 
                 <p><button class="layui-btn site-demo-layim" data-type="chat">加入群聊</button></p>
