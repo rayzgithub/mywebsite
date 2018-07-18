@@ -51,7 +51,8 @@ get_header(); ?>
                         <div class="layui-form-item" style="margin-top: 20px;">
                                 <input type="text" name="title" required id="my_uname"  lay-verify="required" placeholder="请输入用户名（昵称）" autocomplete="off" class="layui-input">
                         </div>
-
+                        <h5>选择你的头像：</h5>
+                        <br>
                         <div class="layui-row layui-col-space15" id="avatar-box">
 
                             <?php foreach($avatar as $key => $val){ ?>
@@ -59,7 +60,7 @@ get_header(); ?>
                                     <div class="layadmin-contact-box">
                                         <a href="javascript:;">
                                             <div class="layadmin-text-center">
-                                                <img src="<?php echo $val; ?>">
+                                                <img src="<?php echo $val; ?>" style="width: 100%">
                                             </div>
                                         </a>
                                     </div>
@@ -98,6 +99,8 @@ get_header(); ?>
                                 reset_user('avatar',$("#my_avatar").attr('src'));
                             }
 
+                            MySocket.send('edit_userinfo',{});
+
                             $("#edit_user_info").trigger('click');
                         })
 
@@ -105,8 +108,17 @@ get_header(); ?>
 
                     function reset_user(key,value){
                         var userinfo = mySocket.get_user_info();
+                        //修改mysocket属性值
+                        mySocket[key] = value;
+                        //修改localstorage存储值
                         userinfo[key] = value;
                         mySocket.setStorage('user_info',JSON.stringify(userinfo));
+                        //修改layim中mine值
+                        if(key == 'uname'){
+                            mine['username'] = value;
+                        }else if(key == 'avatar'){
+                            mine['avatar'] = value;
+                        }
                     }
                 </script>
 

@@ -53,7 +53,7 @@ MySocket = {
             	uuid:uuid,
 				uname:this.create_uname(),
 				sign:'忧伤的签名',
-				avatar:'wp-content/themes/layui/images/avatar/avatar_' + Math.ceil(Math.random()*8) + '.jpg'
+				avatar:this.get_avatar()
 			};
             this.setStorage('user_info',JSON.stringify(user_info));
         }else{
@@ -94,8 +94,21 @@ MySocket = {
         return localStorage.getItem(name);
 	},
     create_uname:function(){
-        return '用户' + Math.ceil(Math.random() * 1000000) + '号';
+        $.ajaxSettings.async = false;
+		var username = '';
+		$.post('wp_userinfo.php',{action:'create_username'},function(res){
+			username = res;
+		},'text');
+        return username ? username : '用户' + Math.ceil(Math.random() * 1000000) + '号';
     },
+    get_avatar:function(){
+        $.ajaxSettings.async = false;
+		var avatar = '';
+		$.post('wp_userinfo.php',{action:'get_single_avatar'},function(res){
+            avatar = res;
+		},'text');
+		return avatar ? avatar : 'wp-content/themes/layui/images/avatar/avatar_1.jpg';
+	},
     /**
 	 * 生成uuid的方法
      * @param len

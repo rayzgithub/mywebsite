@@ -6091,7 +6091,7 @@ function get_all_avatars(){
     //扫描文件夹
     $list = scandir($avatar_dir);
     //定义头像文件格式   avatar_1.jpg
-    $re = '/^avatar_\d.(jpg|jpeg|png|gif)$/';
+    $re = '/^avatar_\d+.(jpg|jpeg|png|gif)$/';
 
     $avatars = [];
 
