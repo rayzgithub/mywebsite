@@ -53,7 +53,7 @@ get_header(); ?>
                         </div>
                         <h5>选择你的头像：</h5>
                         <br>
-                        <div class="layui-row layui-col-space15" id="avatar-box">
+                        <div class="layui-row layui-col-space15" id="avatar-box" style="max-height: 300px;overflow-y: scroll;">
 
                             <?php foreach($avatar as $key => $val){ ?>
                                 <div class="layui-col-md2 layui-col-sm3">
@@ -69,7 +69,7 @@ get_header(); ?>
 
                         </div>
 
-                        <div class="layui-form-item">
+                        <div class="layui-form-item" style="margin-top: 10px;">
                                 <button type="button" class="layui-btn" id="sbmt_form">确认修改</button>
                         </div>
                     </form>
