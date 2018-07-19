@@ -11,7 +11,7 @@ require_wp_db();
 
 global $wpdb;
 
-$info = $wpdb->get_results("select answer.excerpt,answer.content,question.name,question.keywords,answer.answer_id,answer.ans_url from zhihu_answer as answer left join zhihu_question as question on answer.question_id=question.question_id where answer.is_post = 0 limit 200",ARRAY_A);
+$info = $wpdb->get_results("select answer.excerpt,answer.content,question.name,question.keywords,answer.answer_id,answer.ans_url from zhihu_answer as answer left join zhihu_question as question on answer.question_id=question.question_id where answer.is_post = 0 limit 10",ARRAY_A);
 print_r($info);
 $post_time = time();
 
